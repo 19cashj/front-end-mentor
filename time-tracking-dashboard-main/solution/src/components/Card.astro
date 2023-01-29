@@ -1,0 +1,102 @@
+---
+import "@fontsource/rubik";
+
+export interface Props {
+  title: string;
+  hours: number;
+  lastHours: number;
+  timespan: string;
+  icon: string;
+  bannerColor: string;
+}
+
+const { title, hours, lastHours, timespan, icon, bannerColor } = Astro.props;
+---
+
+<div class="card">
+  <div class="banner">
+    <img class="banner__icon" src={`svg/${icon}.svg`} />
+  </div>
+  <div class="data-card">
+    <h2 class="data-card__title">{title}</h2>
+    <a class="data-card__ellipsis">
+      <img src={"svg/icon-ellipsis.svg"} />
+    </a>
+    <h1 class="data-card__hours">{`${hours}hrs`}</h1>
+    <h3 class="data-card__previous">{`${timespan} ${lastHours}`}</h3>
+  </div>
+</div>
+<style define:vars={{ bannerColor }}>
+  h1 {
+    font-size: 3rem;
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+    color: white;
+  }
+  h2 {
+    font-size: 1.125rem;
+    font-family: "Rubik", sans-serif;
+    color: white;
+    font-weight: 400;
+  }
+  h3 {
+    font-size: 1rem;
+    font-family: "Rubik", sans-serif;
+    color: hsl(236, 100%, 87%);
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+  }
+  .banner {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    border-radius: 1rem;
+    background-color: var(--bannerColor);
+    z-index: -1;
+    overflow: hidden;
+  }
+  .banner__icon {
+    padding-right: 1rem;
+    top: -10px;
+  }
+  .data-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 0.5fr;
+    grid-template-areas:
+      "title ellipsis"
+      "hours ."
+      "previous .";
+    row-gap: 1rem;
+    padding: 1rem 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: hsl(235, 46%, 20%);
+    z-index: 2;
+    transform: translateY(-32px);
+  }
+  .data-card:hover {
+    background-color: hsl(235, 45%, 61%);
+  }
+  .data-card__title {
+    grid-area: title;
+  }
+  .data-card__ellipsis {
+    grid-area: ellipsis;
+    justify-self: end;
+  }
+  .data-card__ellipsis:hover {
+    cursor: pointer;
+  }
+  .data-card__hours {
+    grid-area: hours;
+  }
+  .data-card__previous {
+    grid-area: previous;
+  }
+</style>

@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+---
+
+<Layout title="Time Tracking Dashboard">
+  <main>
+    <Card
+      title={"Work"}
+      hours={32}
+      lastHours={36}
+      timespan={"Week"}
+      icon={"icon-work"}
+      bannerColor={"hsl(15, 100%, 70%)"}
+    />
+  </main>
+</Layout>
+
+<style></style>

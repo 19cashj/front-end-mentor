@@ -15,13 +15,13 @@ const { title, hours, lastHours, timespan, icon, bannerColor } = Astro.props;
 
 <div class="card">
   <div class="banner">
-    <img class="banner__icon" src={`svg/${icon}.svg`} />
+    <img class="banner__icon" src={icon} />
   </div>
   <div class="data-card">
     <h2 class="data-card__title">{title}</h2>
-    <a class="data-card__ellipsis">
+    <button class="data-card__ellipsis">
       <img src={"svg/icon-ellipsis.svg"} />
-    </a>
+    </button>
     <h1 class="data-card__hours">{`${hours}hrs`}</h1>
     <h3 class="data-card__previous">{`${timespan} ${lastHours}`}</h3>
   </div>
@@ -47,10 +47,9 @@ const { title, hours, lastHours, timespan, icon, bannerColor } = Astro.props;
   .card {
     display: flex;
     flex-direction: column;
-    width: 25%;
   }
   .banner {
-    width: 100%;
+    height: 5rem;
     display: flex;
     justify-content: flex-end;
     flex-wrap: nowrap;
@@ -61,7 +60,6 @@ const { title, hours, lastHours, timespan, icon, bannerColor } = Astro.props;
   }
   .banner__icon {
     padding-right: 1rem;
-    top: -10px;
   }
   .data-card {
     display: grid;
@@ -78,7 +76,7 @@ const { title, hours, lastHours, timespan, icon, bannerColor } = Astro.props;
     border-radius: 1rem;
     background-color: hsl(235, 46%, 20%);
     z-index: 2;
-    transform: translateY(-32px);
+    transform: translateY(-2rem);
   }
   .data-card:hover {
     background-color: hsl(235, 45%, 61%);
@@ -92,6 +90,8 @@ const { title, hours, lastHours, timespan, icon, bannerColor } = Astro.props;
   }
   .data-card__ellipsis:hover {
     cursor: pointer;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(1%) saturate(26%)
+      hue-rotate(108deg) brightness(106%) contrast(100%);
   }
   .data-card__hours {
     grid-area: hours;

@@ -1,0 +1,90 @@
+---
+import "@fontsource/rubik";
+
+export interface Props {
+  name: string;
+  icon: string;
+}
+
+const { name, icon } = Astro.props;
+---
+
+<div class="card">
+  <div class="card__top">
+    <div class="icon">
+      <img src={icon} />
+    </div>
+    <div class="text">
+      <h3>Report for</h3>
+      <h1>{name}</h1>
+    </div>
+  </div>
+  <div class="card__bottom">
+    <button class="time-select"><h3>Daily</h3></button>
+    <button class="time-select"><h3>Weekly</h3></button>
+    <button class="time-select"><h3>Monthly</h3></button>
+  </div>
+</div>
+
+<style>
+  h1 {
+    font-size: 3rem;
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+    color: white;
+  }
+  h2 {
+    font-size: 1.125rem;
+    font-family: "Rubik", sans-serif;
+    color: white;
+    font-weight: 400;
+  }
+  h3 {
+    font-size: 1rem;
+    font-family: "Rubik", sans-serif;
+    color: hsl(236, 100%, 87%);
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    grid-area: profile;
+  }
+  .card__top {
+    display: flex;
+    flex-direction: column;
+    background-color: hsl(246, 80%, 60%);
+    border-radius: 1rem;
+    padding: 2rem;
+    gap: 3rem;
+    z-index: 1;
+  }
+  .icon > img {
+    width: 5rem;
+    border-radius: 5rem;
+    border: 3px solid white;
+  }
+  .text {
+    margin-bottom: 3rem;
+  }
+  .text h3 {
+    margin-bottom: 0.5rem;
+  }
+  .card__bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: hsl(235, 46%, 20%);
+    border-radius: 1rem;
+    padding: 2.5rem 0 1rem 1rem;
+    transform: translateY(-32px);
+    z-index: 0;
+  }
+  .time-select {
+    padding: 1rem 1rem;
+    width: 5rem;
+    cursor: pointer;
+  }
+  .time-select:hover h3 {
+    color: white;
+  }
+</style>

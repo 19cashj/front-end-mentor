@@ -8,66 +8,54 @@ import ProfileCard from "../components/ProfileCard.astro";
   <main>
     <section class="container">
       <ProfileCard name={"Jeremy Robson"} icon={"images/image-jeremy.png"} />
-      <div>
-        <Card
-          title={"Work"}
-          hours={32}
-          lastHours={36}
-          timespan={"Week"}
-          icon={"svg/icon-work.svg"}
-          bannerColor={"hsl(15, 100%, 70%)"}
-        />
-      </div>
-      <div>
-        <Card
-          title={"Play"}
-          hours={32}
-          lastHours={36}
-          timespan={"Week"}
-          icon={"svg/icon-play.svg"}
-          bannerColor={"hsl(195, 74%, 62%)"}
-        />
-      </div>
-      <div>
-        <Card
-          title={"Study"}
-          hours={32}
-          lastHours={36}
-          timespan={"Week"}
-          icon={"svg/icon-study.svg"}
-          bannerColor={"hsl(348, 100%, 68%)"}
-        />
-      </div>
-      <div>
-        <Card
-          title={"Exercise"}
-          hours={32}
-          lastHours={36}
-          timespan={"Week"}
-          icon={"svg/icon-exercise.svg"}
-          bannerColor={"hsl(145, 58%, 55%)"}
-        />
-      </div>
-      <div>
-        <Card
-          title={"Social"}
-          hours={32}
-          lastHours={36}
-          timespan={"Week"}
-          icon={"svg/icon-social.svg"}
-          bannerColor={"hsl(264, 64%, 52%)"}
-        />
-      </div>
-      <div>
-        <Card
-          title={"Social"}
-          hours={32}
-          lastHours={36}
-          timespan={"Week"}
-          icon={"svg/icon-self-care.svg"}
-          bannerColor={"hsl(43, 84%, 65%)"}
-        />
-      </div>
+      <Card
+        title={"Work"}
+        hours={32}
+        lastHours={36}
+        timespan={"Week"}
+        icon={"svg/icon-work.svg"}
+        bannerColor={"hsl(15, 100%, 70%)"}
+      />
+      <Card
+        title={"Play"}
+        hours={32}
+        lastHours={36}
+        timespan={"Week"}
+        icon={"svg/icon-play.svg"}
+        bannerColor={"hsl(195, 74%, 62%)"}
+      />
+      <Card
+        title={"Study"}
+        hours={32}
+        lastHours={36}
+        timespan={"Week"}
+        icon={"svg/icon-study.svg"}
+        bannerColor={"hsl(348, 100%, 68%)"}
+      />
+      <Card
+        title={"Exercise"}
+        hours={32}
+        lastHours={36}
+        timespan={"Week"}
+        icon={"svg/icon-exercise.svg"}
+        bannerColor={"hsl(145, 58%, 55%)"}
+      />
+      <Card
+        title={"Social"}
+        hours={32}
+        lastHours={36}
+        timespan={"Week"}
+        icon={"svg/icon-social.svg"}
+        bannerColor={"hsl(264, 64%, 52%)"}
+      />
+      <Card
+        title={"Social"}
+        hours={32}
+        lastHours={36}
+        timespan={"Week"}
+        icon={"svg/icon-self-care.svg"}
+        bannerColor={"hsl(43, 84%, 65%)"}
+      />
     </section>
   </main>
 </Layout>
@@ -84,7 +72,9 @@ import ProfileCard from "../components/ProfileCard.astro";
       "profile work play study"
       "profile exercise social self-care";
     gap: 2rem;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-items: stretch;
+    height: 600px;
+    width: 1200px;
   }
 </style>

@@ -49,7 +49,7 @@ import ProfileCard from "../components/ProfileCard.astro";
         bannerColor={"hsl(264, 64%, 52%)"}
       />
       <Card
-        title={"Social"}
+        title={"Self Care"}
         hours={32}
         lastHours={36}
         timespan={"Week"}
@@ -64,6 +64,12 @@ import ProfileCard from "../components/ProfileCard.astro";
   body {
     background-color: hsl(226, 43%, 10%);
   }
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
   .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -72,9 +78,22 @@ import ProfileCard from "../components/ProfileCard.astro";
       "profile work play study"
       "profile exercise social self-care";
     gap: 2rem;
-    align-items: stretch;
-    justify-items: stretch;
-    height: 600px;
-    width: 1200px;
+    padding: 2rem;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: 1050px) {
+    .container {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(7, 1fr);
+      grid-template-areas:
+        "profile"
+        "work"
+        "play"
+        "study"
+        "exercise"
+        "social"
+        "self-care";
+      margin: 0;
+    }
   }
 </style>

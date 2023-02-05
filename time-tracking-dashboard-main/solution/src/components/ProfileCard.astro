@@ -20,11 +20,24 @@ const { name, icon } = Astro.props;
     </div>
   </div>
   <div class="card__bottom">
-    <button class="time-select"><h3>Daily</h3></button>
-    <button class="time-select"><h3>Weekly</h3></button>
-    <button class="time-select"><h3>Monthly</h3></button>
+    <button class="time-select daily-button"><h3>Daily</h3></button>
+    <button class="time-select weekly-button"><h3>Weekly</h3></button>
+    <button class="time-select monthly-button"><h3>Monthly</h3></button>
   </div>
 </div>
+
+<script>
+  import { timeSpan } from "../timespanStore";
+  document.querySelector(".daily-button").addEventListener("click", () => {
+    timeSpan.set("daily");
+  });
+  document.querySelector(".weekly-button").addEventListener("click", () => {
+    timeSpan.set("weekly");
+  });
+  document.querySelector(".monthly-button").addEventListener("click", () => {
+    timeSpan.set("monthly");
+  });
+</script>
 
 <style>
   h1 {

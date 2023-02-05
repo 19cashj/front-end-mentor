@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import Card from "../components/Card/Card.jsx";
 import ProfileCard from "../components/ProfileCard.astro";
+import { timeSpan } from "../timespanStore";
 ---
 
 <Layout title="Time Tracking Dashboard">
@@ -9,56 +10,51 @@ import ProfileCard from "../components/ProfileCard.astro";
     <section class="container">
       <ProfileCard name={"Jeremy Robson"} icon={"images/image-jeremy.png"} />
       <Card
-        title={"Work"}
-        hours={32}
-        lastHours={36}
-        timespan={"Week"}
+        index={0}
         icon={"svg/icon-work.svg"}
         bannerColor={"hsl(15, 100%, 70%)"}
+        client:load
       />
       <Card
-        title={"Play"}
-        hours={32}
-        lastHours={36}
-        timespan={"Week"}
+        index={1}
         icon={"svg/icon-play.svg"}
         bannerColor={"hsl(195, 74%, 62%)"}
+        client:load
       />
       <Card
-        title={"Study"}
-        hours={32}
-        lastHours={36}
-        timespan={"Week"}
+        index={2}
         icon={"svg/icon-study.svg"}
         bannerColor={"hsl(348, 100%, 68%)"}
+        client:load
       />
       <Card
-        title={"Exercise"}
-        hours={32}
-        lastHours={36}
-        timespan={"Week"}
+        index={3}
         icon={"svg/icon-exercise.svg"}
         bannerColor={"hsl(145, 58%, 55%)"}
+        client:load
       />
       <Card
-        title={"Social"}
-        hours={32}
-        lastHours={36}
-        timespan={"Week"}
+        index={4}
         icon={"svg/icon-social.svg"}
         bannerColor={"hsl(264, 64%, 52%)"}
+        client:load
       />
       <Card
-        title={"Self Care"}
-        hours={32}
-        lastHours={36}
-        timespan={"Week"}
+        index={5}
         icon={"svg/icon-self-care.svg"}
         bannerColor={"hsl(43, 84%, 65%)"}
+        client:load
       />
     </section>
   </main>
 </Layout>
+
+<script>
+  import { timeSpan } from "../timespanStore";
+  timeSpan.subscribe((value) => {
+    console.log("timespan:", value);
+  });
+</script>
 
 <style>
   body {

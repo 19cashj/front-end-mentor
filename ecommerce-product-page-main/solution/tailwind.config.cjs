@@ -2,7 +2,15 @@
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {},
+		extend: {
+			screens: {
+				'sm':'0px'
+			},
+			boxShadow: {
+				'inner-circle': 'inset 0px 0px 2px 1px hsl(26, 100%, 55%)',
+				'inner-bar': 'inset 0 -5px 1px -1px hsl(26, 100%, 55%)'
+			}
+		},
 		colors: {
 			transparent: 'transparent',
       		current: 'currentColor',
@@ -17,7 +25,7 @@ module.exports = {
 		},
 		fontFamily: {
 			'sans': ['"Kumbh Sans"', 'sans-serif']
-		}
+		},
 	},
 	plugins: [],
 }

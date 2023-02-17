@@ -1,8 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import Product from "../components/Product";
 ---
 
 <Layout title="Ecommerce Page">
-  <main></main>
+  <main>
+    <Product client:load />
+  </main>
 </Layout>

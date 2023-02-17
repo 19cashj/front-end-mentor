@@ -10,7 +10,7 @@ const Nav = (props) => {
     setCartOpen((current) => !current);
   };
   return (
-    <nav className="flex justify-between items-center border-b border-b-gray-blue lg:h-21 sm:h-15">
+    <nav className="flex justify-between items-center border-b border-b-gray-blue lg:h-21 sm:h-15 z-50">
       <div className="flex justify-center items-center h-full">
         <button className="lg:hidden py-6 pl-6 pr-4 mt-2" onClick={toggleMenu}>
           <img src="/icon-menu.svg" />
@@ -19,18 +19,26 @@ const Nav = (props) => {
           <h3 className="text-3xl font-bold">sneakers</h3>
         </div>
         <ul className="sm:hidden lg:contents text-dark-gray-blue flex justify-center items-center [&>a]:p-5 [&>a]:py-14 [&>a]:h-full [&>*]:cursor-pointer hover:border-b-orange hover:border-b-4">
-          <a className="hover:shadow-inner-bar hover:text-dark-blue">
+          <a href="" className="hover:shadow-inner-bar hover:text-dark-blue">
             Collections
           </a>
-          <a className="hover:shadow-inner-bar hover:text-dark-blue">Men</a>
-          <a className="hover:shadow-inner-bar hover:text-dark-blue">Women</a>
-          <a className="hover:shadow-inner-bar hover:text-dark-blue">About</a>
-          <a className="hover:shadow-inner-bar hover:text-dark-blue">Contact</a>
+          <a href="" className="hover:shadow-inner-bar hover:text-dark-blue">
+            Men
+          </a>
+          <a href="" className="hover:shadow-inner-bar hover:text-dark-blue">
+            Women
+          </a>
+          <a href="" className="hover:shadow-inner-bar hover:text-dark-blue">
+            About
+          </a>
+          <a href="" className="hover:shadow-inner-bar hover:text-dark-blue">
+            Contact
+          </a>
         </ul>
       </div>
       <div className="flex items-center justify-center mr-8 lg:b-4">
         <button
-          className="p-8 mr-4 [&>*]:hover:brightness-40"
+          className="p-8 mr-4 [&>*]:hover:brightness-0"
           onClick={toggleCart}
         >
           <img
@@ -49,14 +57,14 @@ const Nav = (props) => {
               <img src="/icon-close.svg" />
             </button>
             <ul className="flex flex-col text-base font-extrabold [&>*]:p-4 [&>*]:hover:cursor-pointer">
-              <a>Collections</a>
-              <a>Men</a>
-              <a>Women</a>
-              <a>About</a>
-              <a>Contact</a>
+              <a href="">Collections</a>
+              <a href="">Men</a>
+              <a href="">Women</a>
+              <a href="">About</a>
+              <a href="">Contact</a>
             </ul>
           </div>
-          <div className="absolute top-0 left-0 bg-black opacity-60 z-40 w-screen h-screen"></div>
+          <div className="fixed top-0 left-0 bg-black opacity-60 z-40 w-screen h-full"></div>
         </>
       ) : null}
       {cartOpen ? (

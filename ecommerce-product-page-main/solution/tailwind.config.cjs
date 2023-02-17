@@ -8,7 +8,8 @@ module.exports = {
 			},
 			boxShadow: {
 				'inner-circle': 'inset 0px 0px 2px 1px hsl(26, 100%, 55%)',
-				'inner-bar': 'inset 0 -5px 1px -1px hsl(26, 100%, 55%)'
+				'inner-bar': 'inset 0 -5px 1px -1px hsl(26, 100%, 55%)',
+				'box-orange': '0 25px 50px -12px hsl(26, 100%, 55%)'
 			}
 		},
 		colors: {

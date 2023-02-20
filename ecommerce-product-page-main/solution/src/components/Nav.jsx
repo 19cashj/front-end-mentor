@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useStore } from "@nanostores/react";
+import { cartItems, deleteCartItem } from "../cartStore";
 
 const Nav = (props) => {
   const [menuOpen, setMenuOpen] = useState(0);
   const [cartOpen, setCartOpen] = useState(0);
+  const $cartItems = useStore(cartItems);
   const toggleMenu = () => {
     setMenuOpen((current) => !current);
   };
@@ -68,13 +71,46 @@ const Nav = (props) => {
         </>
       ) : null}
       {cartOpen ? (
-        <div className="w-96 flex flex-col absolute top-24 right-0 lg:left-auto sm:left-0 sm:ml-auto sm:mr-auto sm:text-center z-30 bg-white shadow-lg">
+        <div className="w-96 flex flex-col absolute top-24 right-0 lg:left-auto sm:left-0 sm:ml-auto sm:mr-auto sm:text-center z-30 bg-white shadow-lg rounded-lg">
           <h4 className="font-bold border-b border-b-gray-blue p-5 text-left">
             Cart
           </h4>
-          <p className="font-bold text-dark-gray-blue py-20 px-24">
-            Your cart is empty.
-          </p>
+          {Object.values($cartItems).length ? (
+            <ul className="">
+              {Object.values($cartItems).map((cartItem) => (
+                <li className="flex flex-row justify-center">
+                  <img
+                    className="w-12 h-12 mx-4 mt-8 rounded-lg"
+                    src={cartItem.imageSrc}
+                    alt={cartItem.name}
+                  />
+                  <div className="text-left mt-8 mb-4">
+                    <p className="text-dark-gray-blue">{cartItem.name}</p>
+                    <span className="text-dark-gray-blue">
+                      ${cartItem.price}.00 x {cartItem.quantity}
+                    </span>
+                    <span className="font-bold">
+                      {" $"}
+                      {cartItem.totalPrice}.00
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => deleteCartItem(cartItem)}
+                    className="p-4"
+                  >
+                    <img src="/icon-delete.svg" />
+                  </button>
+                </li>
+              ))}
+              <button className="bg-orange py-4 px-8 w-4/5 rounded-lg mt-4 mb-8">
+                <p className="text-white font-bold">Checkout</p>
+              </button>
+            </ul>
+          ) : (
+            <p className="font-bold text-dark-gray-blue py-20 px-24">
+              Your cart is empty.
+            </p>
+          )}
         </div>
       ) : null}
     </nav>

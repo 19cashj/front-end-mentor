@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { addCartItem } from "../cartStore";
 
 const Product = (props) => {
   const [activeImage, setActiveImage] = useState(0);
+  const [quantity, setQuantity] = useState(0);
   const [lightboxActive, setLightboxActive] = useState(0);
   const toggleLightbox = () => {
     setLightboxActive((current) => !current);
@@ -12,6 +14,13 @@ const Product = (props) => {
     "/image-product-3.jpg",
     "/image-product-4.jpg",
   ];
+  const productInfo = {
+    id: "fall-shoe",
+    name: "Fall Limited Edition Sneakers",
+    imageSrc: "/image-product-1-thumbnail.jpg",
+    quantity: quantity,
+    price: 125,
+  };
   const nextImage = () => {
     if (activeImage >= 0 || activeImage <= 2) {
       setActiveImage((prev) => (prev += 1));
@@ -26,6 +35,22 @@ const Product = (props) => {
     }
     if (activeImage == 0) {
       setActiveImage(3);
+    }
+  };
+  const quantityAdd = () => {
+    if (quantity >= 0) {
+      setQuantity((prev) => (prev += 1));
+    }
+  };
+  const quantityDelete = () => {
+    if (quantity >= 1) {
+      setQuantity((prev) => (prev -= 1));
+    }
+  };
+  const addToCart = () => {
+    if (quantity >= 1) {
+      addCartItem(productInfo);
+      setQuantity(0);
     }
   };
   return (
@@ -129,15 +154,24 @@ const Product = (props) => {
         </div>
         <div className="flex lg:flex-row gap-4 mt-8 w-full sm:flex-col">
           <div className="bg-light-gray-blue flex flex-row items-center justify-between rounded-lg lg:w-1/3 sm:w-full">
-            <button className="p-4 shrink-0 hover:opacity-50">
+            <button
+              onClick={() => quantityDelete()}
+              className="p-4 shrink-0 hover:opacity-50"
+            >
               <img className="w-full h-full" src="/icon-minus.svg" />
             </button>
-            <p className="font-bold">0</p>
-            <button className="p-4 shrink-0 hover:opacity-50">
+            <p className="font-bold">{quantity}</p>
+            <button
+              onClick={() => quantityAdd()}
+              className="p-4 shrink-0 hover:opacity-50"
+            >
               <img src="/icon-plus.svg" />
             </button>
           </div>
-          <button className="bg-orange flex flex-row justify-center items-center gap-4 py-4 lg:w-3/4 sm:w-full rounded-lg shadow-box-orange hover:opacity-50">
+          <button
+            onClick={() => addToCart()}
+            className="bg-orange flex flex-row justify-center items-center gap-4 py-4 lg:w-3/4 sm:w-full rounded-lg shadow-box-orange hover:opacity-50"
+          >
             <img src="/icon-cart.svg" className="invert brightness-0" />
             <p className="text-white font-bold whitespace-nowrap">
               Add to cart

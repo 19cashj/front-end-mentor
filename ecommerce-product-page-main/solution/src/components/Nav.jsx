@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useStore } from "@nanostores/react";
-import { cartItems, deleteCartItem } from "../cartStore";
+import { cartItems, cartQuantity, deleteCartItem } from "../cartStore";
 
 const Nav = (props) => {
   const [menuOpen, setMenuOpen] = useState(0);
   const [cartOpen, setCartOpen] = useState(0);
   const $cartItems = useStore(cartItems);
+  const $cartQuantity = useStore(cartQuantity);
   const toggleMenu = () => {
     setMenuOpen((current) => !current);
   };
   const toggleCart = () => {
     setCartOpen((current) => !current);
   };
+
   return (
     <nav className="flex justify-between items-center border-b border-b-gray-blue lg:h-21 sm:h-15 z-50">
       <div className="flex justify-center items-center h-full">
@@ -41,13 +43,18 @@ const Nav = (props) => {
       </div>
       <div className="flex items-center justify-center mr-8 lg:b-4">
         <button
-          className="p-8 mr-4 [&>*]:hover:brightness-0"
+          className="p-8 lg:mr-4 sm:mr-0 [&>img]:hover:brightness-0 relative"
           onClick={toggleCart}
         >
           <img
             src="/icon-cart.svg"
             className={cartOpen ? "brightness-0" : "brightness-80"}
           />
+          {$cartQuantity > 0 ? (
+            <div className="text-white text-xs bg-orange absolute top-6 right-5 px-2 rounded-full">
+              {$cartQuantity}
+            </div>
+          ) : null}
         </button>
         <button className="sm:w-8 lg:w-12 p-0.5 rounded-full hover:shadow-inner-circle">
           <img src="/image-avatar.png" />
